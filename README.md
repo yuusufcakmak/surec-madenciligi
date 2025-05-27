@@ -1,51 +1,98 @@
-# Süreç Madenciliği Projesi
+# 🛠️ Süreç Madenciliği Projesi
 
-Bu proje, bir .CSV dosyasından süreç verilerini okuyarak temel analizleri yapabilen ve kullanıcıya sunabilen basitleştirilmiş bir süreç madenciliği uygulamasıdır.
+Bu proje, bir `.CSV` dosyasından süreç verilerini okuyarak temel süreç madenciliği analizlerini gerçekleştiren ve analiz sonuçlarını hem **konsol üzerinden** hem de **web tabanlı arayüzle (Streamlit)** kullanıcıya sunan bir uygulamadır.
 
-Uygulamanın iki farklı kullanım şekli vardır:
-1.  Konsol Tabanlı Analiz Aracı
-2.  Web Tabanlı Kullanıcı Arayüzü (Streamlit ile)
+---
 
-## 1. Konsol Tabanlı Analiz Aracı
+## 🚀 Özellikler
 
-### Kurulum ve Çalıştırma
-1.  Projeyi klonlayın veya indirin.
-2.  Gerekli kütüphaneleri yükleyin:
-    ```bash
-    pip install pandas matplotlib graphviz
-    ```
-    *Not: `graphviz` Python kütüphanesinin çalışabilmesi için sisteminizde Graphviz yazılımının da kurulu olması ve PATH ortam değişkenine eklenmiş olması gerekebilir. Kurulum detayları için: https://graphviz.org/download/*
-3.  `process_miner.py` betiğini çalıştırın:
-    ```bash
-    python process_miner.py
-    ```
-4.  Program sizden bir .CSV dosyasının yolunu girmenizi isteyecektir.
-5.  Analiz sonuçları konsolda gösterilecek ve aşağıdaki grafik dosyaları projenizin ana dizinine kaydedilecektir:
-    *   `activity_frequencies.png` (Adım frekansları bar grafiği)
-    *   `process_flow.png` (Basit süreç akış diyagramı)
+* 📈 Aktivite frekanslarını analiz eder.
+* 🔄 Süreç akış diyagramı oluşturur.
+* ⏱ Ortalama işlem sürelerini ve geçişleri hesaplar.
+* 🌐 Hem terminal hem de web arayüzü ile çalışır.
 
-## 2. Web Tabanlı Kullanıcı Arayüzü (Streamlit)
+---
 
-### Kurulum ve Çalıştırma
-1.  Projeyi klonlayın veya indirin.
-2.  Gerekli tüm kütüphaneleri yükleyin (konsol aracı için gerekenlere ek olarak `streamlit`):
-    ```bash
-    pip install pandas matplotlib graphviz streamlit
-    ```
-    *Graphviz kurulum notu yukarıdaki bölümle aynıdır.*
-3.  Streamlit uygulamasını çalıştırın:
-    ```bash
-    streamlit run app.py
-    ```
-4.  Web tarayıcınızda açılan arayüz üzerinden bir .CSV dosyası yükleyin.
-5.  Analiz sonuçları ve görseller web sayfasında görüntülenecektir. Grafikler ayrıca `streamlit_outputs` adlı bir klasöre kaydedilecektir.
+## 🧰 Kullanım Şekilleri
 
-## .CSV Dosya Formatı
+### 1⃣ Konsol Tabanlı Analiz Aracı
 
-Kullanılacak .CSV dosyası minimum aşağıdaki sütunları içermelidir:
-*   `Case ID`
-*   `Activity Name`
-*   `Start Time`
-*   `End Time`
+#### 🔧 Kurulum
 
-Tarih/saat sütunları (`Start Time`, `End Time`) pandas tarafından okunabilir formatta olmalıdır (örn: `YYYY-MM-DD HH:MM:SS`). 
+```bash
+pip install pandas matplotlib graphviz
+```
+
+📌 *Not: `graphviz` kütüphanesi için sisteminize Graphviz yazılımını da yüklemeniz gerekebilir.*
+👉 Kurulum için: [Graphviz Download](https://graphviz.org/download/)
+
+#### ▶️ Çalıştırma
+
+```bash
+python process_miner.py
+```
+
+Ardından .CSV dosya yolunu girmeniz istenecek. Analiz sonrası:
+
+* `activity_frequencies.png` — Aktivite frekanslarını gösterir.
+* `process_flow.png` — Süreç akışını görselleştirir.
+
+---
+
+### 2⃣ Web Tabanlı Arayüz (Streamlit ile)
+
+#### 🔧 Kurulum
+
+```bash
+pip install pandas matplotlib graphviz streamlit
+```
+
+#### ▶️ Çalıştırma
+
+```bash
+streamlit run app.py
+```
+
+Tarayıcınızda açılan arayüz üzerinden .CSV dosyasını yükleyerek aşağıdaki analizleri görebilirsiniz:
+
+* Aktivite frekans grafiği
+* Süreç akış diyagramı
+* Ortalama tamamlanma süresi
+* En sık geçiş yapan adımlar
+
+📁 Tüm grafikler `streamlit_outputs` klasörünüze de kaydedilecektir.
+
+---
+
+## 📄 Gerekli .CSV Formatı
+
+Aşağıdaki başlıklara sahip olmalıdır:
+
+| Sütun Adı       | Açıklama                                           |
+| --------------- | -------------------------------------------------- |
+| `Case ID`       | Sürece ait vaka/örnek numarası                     |
+| `Activity Name` | Gerçekleşen adım/aktivite ismi                     |
+| `Start Time`    | Aktivitenin başlama zamanı (`YYYY-MM-DD HH:MM:SS`) |
+| `End Time`      | Aktivitenin bitiş zamanı                           |
+
+---
+
+## 🖼️ Uygulama Görselleri
+
+### Streamlit Ana Sayfa
+
+<img src="https://github.com/user-attachments/assets/ecc2e967-3eb3-4cc5-8f67-d36185dcc23e" width="600" alt="Streamlit Arayüzü - Giriş" />
+
+### Aktivite Frekans Grafiği
+
+<img src="https://github.com/user-attachments/assets/ddec0746-4678-4df5-98f3-716dab78269f" width="600" alt="Aktivite Frekansları" />
+
+### Süreç Akış Diyagramı
+
+<img src="https://github.com/user-attachments/assets/e723f035-bd41-4f3e-a9f0-7d3182fef9e6" width="600" alt="Süreç Akışı" />
+
+---
+
+## ✍️ Geliştirici
+
+👨‍💻 **Yusuf ÇAKMAK**
