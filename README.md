@@ -93,6 +93,4 @@ Aşağıdaki başlıklara sahip olmalıdır:
 
 ---
 
-## ✍️ Geliştirici
 
-👨‍💻 **Yusuf ÇAKMAK**
